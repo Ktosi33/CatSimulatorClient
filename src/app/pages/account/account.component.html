@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="half" [ngClass]="{'active': activeTab === 'login'}" (click)="setActiveTab('login')">
+    <app-login-form *ngIf="activeTab === 'login'; else logininfo"></app-login-form>
+  </div>
+  <div class="half" [ngClass]="{'active': activeTab === 'register'}" (click)="setActiveTab('register')">
+    <app-register-form *ngIf="activeTab === 'register'; else registerinfo"></app-register-form>
+  </div>
+
+
+  <ng-template #registerinfo>
+      <H1>Nie masz konta? Zarejestruj się</H1><span class="prompt">></span>
+  </ng-template>
+  <ng-template #logininfo>
+    <H1>Posiadasz konto? Zaloguj się</H1><span class="prompt">></span>
+</ng-template>
+</div>

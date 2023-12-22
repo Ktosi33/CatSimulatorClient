@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+.half {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.half:hover {
+  background-color: #f0f0f0; /* Kolor podświetlenia po najechaniu myszką */
+}
+
+.half.active {
+  background-color: #e0e0e07c; /* Kolor podświetlenia aktywnego obszaru */
+}
+.prompt{
+  color: #3f51b5;
+}

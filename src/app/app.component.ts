@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { LoginFormComponent } from './components/login-form/login-form.component';
-import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { TopMenuComponent } from './components/top-menu/top-menu.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, LoginFormComponent, RegisterFormComponent],
+  imports: [CommonModule, RouterOutlet, TopMenuComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
