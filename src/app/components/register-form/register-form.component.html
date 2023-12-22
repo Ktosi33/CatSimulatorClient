@@ -1,0 +1,12 @@
+<div class="wrapper">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <h2>Rejestracja</h2>
+    <label for="username">Nazwa użytkownika:</label>
+    <input type="text" id="username" formControlName="username">
+
+    <label for="password">Hasło:</label>
+    <input type="password" id="password" formControlName="password">
+
+    <button type="submit" [disabled]="!registerForm.valid">Zarejestruj się</button>
+  </form>
+  </div>
