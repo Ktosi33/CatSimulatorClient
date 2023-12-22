@@ -8,5 +8,6 @@
   <input type="password" id="password" formControlName="password">
 
   <button type="submit" [disabled]="!loginForm.valid">Zaloguj się</button>
+  <div class="error">{{errorMessage()}}</div>
 </form>
 </div>

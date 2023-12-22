@@ -8,3 +8,10 @@
 .spacer {
   flex: 1 1 auto;
 }
+:host {
+  display: block;
+}
+
+.endmenu{
+  margin-top: 64px
+}
