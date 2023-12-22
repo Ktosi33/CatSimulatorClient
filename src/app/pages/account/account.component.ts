@@ -11,7 +11,7 @@ import { RegisterFormComponent } from '../../components/register-form/register-f
   styleUrl: './account.component.scss'
 })
 export class AccountComponent {
-  activeTab: 'register' | 'login' = 'register';
+  activeTab: 'register' | 'login' = 'login';
   setActiveTab(tab: 'register' | 'login'): void {
     this.activeTab = tab;
   }

@@ -9,7 +9,12 @@ label {
   display: block;
   margin-bottom: 8px;
 }
-
+.error{
+  color: red;
+}
+.inform{
+  color: green;
+}
 input {
   width: 100%;
   padding: 8px;

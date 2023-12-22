@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { JwtAuthenticationControllerService } from '../../api/jwtAuthenticationController.service';
+import { UserDto } from '../../model/userDto';
 
 @Component({
   selector: 'app-register-form',
@@ -10,7 +12,9 @@ import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angula
 })
 export class RegisterFormComponent {
   registerForm: FormGroup;
-
+  private jwtAuthenticationControllerService = inject(JwtAuthenticationControllerService)
+  errorMessage = signal("")
+  informationMessage = signal("")
   constructor(private formBuilder: FormBuilder) {
     this.registerForm = this.formBuilder.group({
       username: ['', Validators.required],
@@ -19,10 +23,22 @@ export class RegisterFormComponent {
   }
 
   onSubmit() {
-    if (this.registerForm.valid) {
-      // Tutaj możesz umieścić kod do przetwarzania danych logowania, np. wysłanie ich na serwer.
-      // Na potrzeby przykładu, wyświetlimy dane w konsoli.
-      console.log('Wysłano dane rejestracji:', this.registerForm.value);
+    if (this.registerForm.valid)  {
+
+      const userDto : UserDto ={
+        username: this.registerForm.value.username,
+        password: this.registerForm.value.password
+      }
+      this.jwtAuthenticationControllerService.saveUser(userDto).subscribe(
+        data => {
+          this.registerForm.reset();
+          this.informationMessage.set("Utworzono użytkownika")
+        },
+        error => {
+          this.errorMessage.set("Wystąpił błąd podczas logowania.");
+          this.registerForm.reset();
+        }
+      );
     }
   }
 }

@@ -36,7 +36,6 @@ export class LoginFormComponent {
         username: this.loginForm.value.username,
         password: this.loginForm.value.password
       }
-      console.log("work")
       this.jwtAuthenticationControllerService.createAuthenticationToken(userDto).pipe(
         take(1)
       ).subscribe(
