@@ -31,7 +31,7 @@ import { Router } from '@angular/router';
 export class CatFormComponent implements OnInit{
   @Input() initData : CatDto | null = null
 
-  catForm: FormGroup;
+  catForm: FormGroup = null!;
   catImage : WritableSignal<Array<CatImageDto>> = signal([])
   private tokenService = inject(TokenService)
   private catControllerService = inject(CatControllerService)
@@ -41,7 +41,13 @@ export class CatFormComponent implements OnInit{
   errorMessage = signal("")
   afterSubmit = signal(false);
   private router = inject(Router)
-  constructor(private fb: FormBuilder) {
+  private fb = inject(FormBuilder)
+
+  ngOnInit(): void {
+    this.catImageControllerService.getImages().subscribe(data => {
+      this.catImage.set(data);
+    })
+    console.log(this.initData)
     if(this.initData)
     {
       this.catForm = this.fb.group({
@@ -55,11 +61,6 @@ export class CatFormComponent implements OnInit{
     });
   }
   }
-  ngOnInit(): void {
-    this.catImageControllerService.getImages().subscribe(data => {
-      this.catImage.set(data);
-    })
-  }
 
   onSubmit() {
     this.afterSubmit.set(true)
@@ -68,9 +69,10 @@ export class CatFormComponent implements OnInit{
       console.log(catDto);
       const token = this.tokenService.getDecodedToken();
       catDto.username = token.sub
-
+      console.log(this.initData)
       if(this.initData)
       {
+        catDto.feedingLevel = this.initData.feedingLevel;
       this.$editCat = this.catControllerService.updateCatById(this.initData.catId!, catDto).subscribe(
         (response) => {
           this.catForm.reset();
