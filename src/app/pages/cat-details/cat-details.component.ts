@@ -4,11 +4,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CatControllerService } from '../../api/catController.service';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-cat-details',
   standalone: true,
-  imports: [CommonModule, MatIconModule],
+  imports: [CommonModule, MatIconModule, MatButtonModule],
   templateUrl: './cat-details.component.html',
   styleUrl: './cat-details.component.scss'
 })

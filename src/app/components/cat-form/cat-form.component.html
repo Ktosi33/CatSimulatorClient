@@ -4,7 +4,7 @@
       <mat-card-content>
         <div class="form-field">
           <mat-form-field>
-            <input matInput placeholder="Cat Name" formControlName="name" required/>
+            <input matInput placeholder="Imie kota" formControlName="name" required/>
             <mat-error *ngIf="catForm.get('name')?.hasError('required')">
               Imie kota jest wymagane
             </mat-error>
@@ -21,7 +21,8 @@
         </mat-radio-group>
 
         <div class="form-field">
-          <button mat-raised-button color="primary" type="submit">Submit</button>
+          <button mat-raised-button color="primary" type="submit" *ngIf="initData == null">Adoptuj</button>
+          <button mat-raised-button color="primary" type="submit" *ngIf="initData != null">Podmień🤫</button>
         </div>
         <div class="error">{{errorMessage()}}</div>
       </mat-card-content>
