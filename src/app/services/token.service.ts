@@ -1,6 +1,6 @@
 import { Injectable, OnInit, inject, signal } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-
+import { JwtPayload, jwtDecode  }from 'jwt-decode';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +13,14 @@ export class TokenService{
     const cookieValue =  this.cookieService.get(this.tokenKey)
     return cookieValue
   }
+  getDecodedToken() : JwtPayload {
+    const token = this.getToken()
 
+    const decodedToken = jwtDecode(token as string);
+    console.log(decodedToken);
+
+    return decodedToken;
+  }
   setToken(value: string, expirationDays: number): void {
     const date = new Date();
     date.setTime(date.getTime() + expirationDays * 24 * 60 * 60 * 1000);
