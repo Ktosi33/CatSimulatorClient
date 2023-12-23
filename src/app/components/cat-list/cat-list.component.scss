@@ -20,6 +20,10 @@
 .custom-button {
   font-size: 1rem;
 }
+.custom-button2 {
+  @extend .custom-button;
+  margin-top: 20px;
+}
 .bin{
   height: 300px;
   width: fit-content;

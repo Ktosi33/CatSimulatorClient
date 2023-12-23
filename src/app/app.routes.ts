@@ -5,6 +5,7 @@ import { AccountComponent } from './pages/account/account.component';
 import { authGuard } from './guards/auth.guard';
 import { loggedGuard } from './guards/logged.guard';
 import { CatCreatorComponent } from './pages/cat-creator/cat-creator.component';
+import { CatDetailsComponent } from './pages/cat-details/cat-details.component';
 
 
 export const routes: Routes = [
@@ -25,7 +26,7 @@ export const routes: Routes = [
   },
   {
     path:'cat/:id',
-    component: CatCreatorComponent,
+    component: CatDetailsComponent,
     canActivate: [authGuard]
   },
   {

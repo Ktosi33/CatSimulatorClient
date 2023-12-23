@@ -5,11 +5,11 @@ import { CommonModule } from '@angular/common';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 @Component({
   selector: 'app-top-menu',
   standalone: true,
-  imports: [MatToolbarModule, CommonModule, MatButtonModule, MatMenuModule, MatIconModule],
+  imports: [MatToolbarModule, CommonModule, MatButtonModule, MatMenuModule, MatIconModule, RouterModule],
   templateUrl: './top-menu.component.html',
   styleUrl: './top-menu.component.scss'
 })

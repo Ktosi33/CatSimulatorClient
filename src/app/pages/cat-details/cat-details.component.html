@@ -1,11 +1,25 @@
+<div class="close-button-container">
+  <button mat-icon-button (click)="closeCat()">
+    <mat-icon aria-label="Close">close</mat-icon>
+  </button>
+</div>
+
 <div class="cat-container">
-  <div class="cat-image">
-    <img [src]="cat()?.catImageName" alt="Cat Image">
+  <div class="cat-image-container">
+    <img class="cat-image" [src]="'../../../assets/' + cat()?.catImageName" alt="Cat Image">
   </div>
   <div class="cat-details">
-    <h2>{{ cat.name }}</h2>
-    <p>Feeding Level: {{ cat()?.feedingLevel }}</p>
-    <p>Username: {{ cat()?.username }}</p>
-    <button mat-raised-button color="primary" (click)="feedCat()">Feed Cat</button>
+    <div class="details-container">
+      <div class="child-container">
+        <h2>To twój kot o imieniu {{ cat()?.name }}</h2>
+        <p>Feeding Level: {{ cat()?.feedingLevel }}</p>
+        <p>Username: {{ cat()?.username }}</p>
+      </div>
+      <div class="child-container">
+        <div class="button-container">
+          <button mat-raised-button color="primary" (click)="feedCat()">Feed Cat</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
