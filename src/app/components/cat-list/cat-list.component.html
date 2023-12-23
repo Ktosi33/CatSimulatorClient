@@ -8,19 +8,28 @@
 
     <ng-container matColumnDef="name" >
       <th mat-header-cell *matHeaderCellDef> Imie kota </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.catImageName === '3.png'">always</ng-container>
+        <ng-container *ngIf="element.catImageName !== '3.png'">{{element.name}} </ng-container>
+        </td>
     </ng-container>
 
 
     <ng-container matColumnDef="feedingLevel">
       <th mat-header-cell *matHeaderCellDef> Poziom nakarmienia </th>
-      <td mat-cell *matCellDef="let element"> {{element.feedingLevel}} </td>
+      <td mat-cell *matCellDef="let element">
+      <ng-container *ngIf="element.catImageName === '3.png'">the red</ng-container>
+      <ng-container *ngIf="element.catImageName !== '3.png'">{{element.feedingLevel}} </ng-container>
+    </td>
     </ng-container>
 
 
     <ng-container matColumnDef="username">
       <th mat-header-cell *matHeaderCellDef> Imie wlasciciela </th>
-      <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.catImageName === '3.png'">cat </ng-container>
+        <ng-container *ngIf="element.catImageName !== '3.png'">{{element.username}} </ng-container>
+      </td>
     </ng-container>
 
 
@@ -28,7 +37,6 @@
       <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
       <td mat-cell *matCellDef="let element">
        <a [routerLink]="['/cat', element.catId]"> <mat-icon>arrow_circle_right</mat-icon></a>
-
       </td>
     </ng-container>
 
