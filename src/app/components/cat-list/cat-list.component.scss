@@ -1,0 +1,26 @@
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.custom-heading {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.custom-paragraph {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.custom-button {
+  font-size: 1rem;
+}
+.bin{
+  height: 300px;
+  width: fit-content;
+}

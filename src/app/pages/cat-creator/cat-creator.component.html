@@ -1,1 +1,23 @@
-<p>cat-creator works!</p>
+<div class="cat-form center-content">
+  <form [formGroup]="catForm" (ngSubmit)="onSubmit()">
+    <mat-card>
+      <mat-card-content>
+        <div class="form-field">
+          <mat-form-field>
+            <input matInput placeholder="Cat Name" formControlName="name" required/>
+          </mat-form-field>
+        </div>
+
+        <mat-radio-group formControlName="catImageName" >
+          <mat-radio-button *ngFor="let image of catImages" [value]="image">
+            <img [src]="'../../../assets/' + image" alt="{{ image }}" [ngStyle]="{ 'height': '100px'}" />
+          </mat-radio-button>
+        </mat-radio-group>
+        <div class="form-field">
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+        </div>
+        <div class="error">{{errorMessage()}}</div>
+      </mat-card-content>
+    </mat-card>
+  </form>
+</div>

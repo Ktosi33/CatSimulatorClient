@@ -216,11 +216,11 @@ export class CatControllerService {
             }
         }
 
-        let localVarPath = `/cats/${this.configuration.encodeParam({name: "catId", value: catId, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: "int64"})}`;
+        let localVarPath = `/cats/id/${this.configuration.encodeParam({name: "catId", value: catId, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: "int64"})}`;
         return this.httpClient.request<CatDto>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                responseType: <any>responseType_,
+                responseType: 'json',
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
                 observe: observe,
@@ -284,7 +284,7 @@ export class CatControllerService {
         return this.httpClient.request<Array<CatDto>>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                responseType: <any>responseType_,
+                responseType: 'json',
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
                 observe: observe,
@@ -348,7 +348,7 @@ export class CatControllerService {
         return this.httpClient.request<object>('delete', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                responseType: <any>responseType_,
+                responseType: 'json',
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
                 observe: observe,
@@ -426,7 +426,7 @@ export class CatControllerService {
             {
                 context: localVarHttpContext,
                 body: catDto,
-                responseType: <any>responseType_,
+                responseType: 'json',
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
                 observe: observe,
