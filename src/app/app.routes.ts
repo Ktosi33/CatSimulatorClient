@@ -19,7 +19,12 @@ export const routes: Routes = [
     canActivate: [authGuard]
   },
   {
-    path:'catcreator',
+    path:'cat/create',
+    component: CatCreatorComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path:'cat/:id',
     component: CatCreatorComponent,
     canActivate: [authGuard]
   },

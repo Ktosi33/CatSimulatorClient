@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, OnInit, WritableSignal, inject, signal } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,6 +13,8 @@ import { TokenService } from '../../services/token.service';
 import { CatControllerService } from '../../api/catController.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { CatImageControllerService } from '../../api/catImageController.service';
+import { CatImageDto } from '../../model/catImageDto';
 @Component({
   selector: 'app-cat-creator',
   standalone: true,
@@ -28,12 +30,12 @@ import { Router } from '@angular/router';
   templateUrl: './cat-creator.component.html',
   styleUrl: './cat-creator.component.scss'
 })
-export class CatCreatorComponent {
+export class CatCreatorComponent implements OnInit{
   catForm: FormGroup;
-  catImages = ["1.png", "2.png", "3.png", "4.png", "5.png"]
-
+  catImage : WritableSignal<Array<CatImageDto>> = signal([])
   private tokenService = inject(TokenService)
   private catControllerService = inject(CatControllerService)
+  private catImageControllerService = inject(CatImageControllerService)
   $addCat : Subscription = null!;
   errorMessage = signal("")
   afterSubmit = signal(false);
@@ -43,6 +45,11 @@ export class CatCreatorComponent {
       name: ['', Validators.required],
       catImageName: ['', Validators.required]
     });
+  }
+  ngOnInit(): void {
+    this.catImageControllerService.getImages().subscribe(data => {
+      this.catImage.set(data);
+    })
   }
 
   onSubmit() {

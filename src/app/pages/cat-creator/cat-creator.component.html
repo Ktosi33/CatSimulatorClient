@@ -12,8 +12,8 @@
         </div>
 
         <mat-radio-group formControlName="catImageName" >
-          <mat-radio-button *ngFor="let image of catImages" [value]="image">
-            <img [src]="'../../../assets/' + image" alt="{{ image }}" [ngStyle]="{ 'height': '100px'}" />
+          <mat-radio-button *ngFor="let image of catImage()" [value]="image.imageName">
+            <img [src]="'../../../assets/' + image.imageName" alt="{{ image.imageName }}" [ngStyle]="{ 'height': '100px'}" />
           </mat-radio-button>
           <mat-error *ngIf="catForm.get('catImageName')?.hasError('required') && afterSubmit() == true">
             Wybierz kota

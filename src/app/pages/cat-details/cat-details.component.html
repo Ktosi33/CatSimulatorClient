@@ -1,1 +1,11 @@
-<p>cat-details works!</p>
+<div class="cat-container">
+  <div class="cat-image">
+    <img [src]="cat()?.catImageName" alt="Cat Image">
+  </div>
+  <div class="cat-details">
+    <h2>{{ cat.name }}</h2>
+    <p>Feeding Level: {{ cat()?.feedingLevel }}</p>
+    <p>Username: {{ cat()?.username }}</p>
+    <button mat-raised-button color="primary" (click)="feedCat()">Feed Cat</button>
+  </div>
+</div>

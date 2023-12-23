@@ -34,7 +34,7 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  <button mat-raised-button color="primary" class="custom-button"  [routerLink]="['/catcreator']">Zaadoptuj kolejnego Kota</button>
+  <button mat-raised-button color="primary" class="custom-button"  [routerLink]="['/cat', 'create']">Zaadoptuj kolejnego Kota</button>
 </ng-container>
 
 <ng-template #nocat class="center-content">
@@ -45,6 +45,6 @@
   <p class="custom-paragraph">Zaadoptuj jakiegoś! </p>
   <img src="./../../../assets/garbage.jpg" alt="bin" class="bin"/> <br />
 
-  <button mat-raised-button color="primary" class="custom-button"  [routerLink]="['/catcreator']">Zaadoptuj Kota</button>
+  <button mat-raised-button color="primary" class="custom-button"  [routerLink]="['/cat', 'create']">Zaadoptuj Kota</button>
 </ng-template>
 
