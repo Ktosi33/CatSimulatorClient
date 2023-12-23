@@ -39,7 +39,7 @@ export class CatDetailsComponent {
     })
   }
   editCat() {
-    throw new Error('Method not implemented.');
+    this.router.navigate(['/cat', 'edit', this.catId])
     }
   closeCat() {
     const $cat = this.catControllerService.removeCatById(this.catId).subscribe(_ => {
