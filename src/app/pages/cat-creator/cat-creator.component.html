@@ -5,6 +5,9 @@
         <div class="form-field">
           <mat-form-field>
             <input matInput placeholder="Cat Name" formControlName="name" required/>
+            <mat-error *ngIf="catForm.get('name')?.hasError('required')">
+              Imie kota jest wymagane
+            </mat-error>
           </mat-form-field>
         </div>
 
@@ -12,7 +15,11 @@
           <mat-radio-button *ngFor="let image of catImages" [value]="image">
             <img [src]="'../../../assets/' + image" alt="{{ image }}" [ngStyle]="{ 'height': '100px'}" />
           </mat-radio-button>
+          <mat-error *ngIf="catForm.get('catImageName')?.hasError('required') && afterSubmit() == true">
+            Wybierz kota
+          </mat-error>
         </mat-radio-group>
+
         <div class="form-field">
           <button mat-raised-button color="primary" type="submit">Submit</button>
         </div>

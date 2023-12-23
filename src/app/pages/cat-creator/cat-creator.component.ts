@@ -36,6 +36,7 @@ export class CatCreatorComponent {
   private catControllerService = inject(CatControllerService)
   $addCat : Subscription = null!;
   errorMessage = signal("")
+  afterSubmit = signal(false);
   private router = inject(Router)
   constructor(private fb: FormBuilder) {
     this.catForm = this.fb.group({
@@ -45,6 +46,7 @@ export class CatCreatorComponent {
   }
 
   onSubmit() {
+    this.afterSubmit.set(true)
     if (this.catForm.valid) {
       const catDto: CatDto = this.catForm.value;
       console.log(catDto);
