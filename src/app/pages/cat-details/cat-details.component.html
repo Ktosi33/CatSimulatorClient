@@ -1,23 +1,26 @@
 <div class="close-button-container">
+  <button mat-icon-button (click)="editCat()">
+    <mat-icon aria-label="Edit">edit</mat-icon>
+  </button>
   <button mat-icon-button (click)="closeCat()">
-    <mat-icon aria-label="Close">close</mat-icon>
+    <mat-icon aria-label="Delete">delete_forever</mat-icon>
   </button>
 </div>
 
 <div class="cat-container">
-  <div class="cat-image-container">
+  <div *ngIf="cat() !== null"   class="cat-image-container">
     <img class="cat-image" [src]="'../../../assets/' + cat()?.catImageName" alt="Cat Image">
   </div>
   <div class="cat-details">
     <div class="details-container">
       <div class="child-container">
         <h2>To twój kot o imieniu {{ cat()?.name }}</h2>
-        <p>Feeding Level: {{ cat()?.feedingLevel }}</p>
-        <p>Username: {{ cat()?.username }}</p>
+        <p>Poziom nakarmienia: {{ cat()?.feedingLevel }}</p>
+        <p>Nazwa właściciela: {{ cat()?.username }}</p>
       </div>
       <div class="child-container">
         <div class="button-container">
-          <button mat-raised-button color="primary" (click)="feedCat()">Feed Cat</button>
+          <button mat-raised-button color="primary" (click)="feedCat()">Nakarm kota</button>
         </div>
       </div>
     </div>
