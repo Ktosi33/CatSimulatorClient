@@ -156,7 +156,7 @@ export class CatControllerService {
             {
                 context: localVarHttpContext,
                 body: catDto,
-                responseType: <any>responseType_,
+                responseType: 'json',
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
                 observe: observe,

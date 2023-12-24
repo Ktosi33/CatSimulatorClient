@@ -66,11 +66,9 @@ export class CatFormComponent implements OnInit{
     this.afterSubmit.set(true)
     if (this.catForm.valid) {
       const catDto: CatDto = this.catForm.value;
-      console.log(catDto);
       const token = this.tokenService.getDecodedToken();
       catDto.username = token.sub
-      console.log(this.initData)
-      if(this.initData)
+      if(this.initData !== null)
       {
         catDto.feedingLevel = this.initData.feedingLevel;
       this.$editCat = this.catControllerService.updateCatById(this.initData.catId!, catDto).subscribe(
