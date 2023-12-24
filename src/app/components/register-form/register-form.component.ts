@@ -32,10 +32,12 @@ export class RegisterFormComponent {
       this.jwtAuthenticationControllerService.saveUser(userDto).subscribe(
         data => {
           this.registerForm.reset();
+          this.errorMessage.set("")
           this.informationMessage.set("Utworzono użytkownika")
         },
         error => {
-          this.errorMessage.set("Wystąpił błąd podczas logowania.");
+          this.errorMessage.set(error.error.error);
+          this.informationMessage.set("")
           this.registerForm.reset();
         }
       );

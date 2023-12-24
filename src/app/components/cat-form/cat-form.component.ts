@@ -76,10 +76,11 @@ export class CatFormComponent implements OnInit{
       this.$editCat = this.catControllerService.updateCatById(this.initData.catId!, catDto).subscribe(
         (response) => {
           this.catForm.reset();
+          this.errorMessage.set("")
           this.router.navigate(['cat', this.initData!.catId!])
         },
         (error) => {
-          this.errorMessage.set("Coś poszło nie tak")
+          this.errorMessage.set(error.error.error)
         }
       );
       }
@@ -87,10 +88,11 @@ export class CatFormComponent implements OnInit{
       this.$addCat = this.catControllerService.addCat(catDto).subscribe(
         (response) => {
           this.catForm.reset();
+          this.errorMessage.set("")
           this.router.navigate(['home'])
         },
         (error) => {
-          this.errorMessage.set("Coś poszło nie tak")
+          this.errorMessage.set(error.error.error)
         }
       );
     }

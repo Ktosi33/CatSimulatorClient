@@ -42,6 +42,7 @@ export class LoginFormComponent {
         data => {
           if (data && data.token) {
             this.cookieService.setToken(data.token, 100);
+            this.errorMessage.set("")
             this.router.navigate(['home']);
           } else {
             this.errorMessage.set("Logowanie nie powiodło się");
@@ -52,7 +53,7 @@ export class LoginFormComponent {
           if (error.status === 401) {
             this.errorMessage.set("Nieprawidłowy login lub hasło");
           } else {
-            this.errorMessage.set("Wystąpił błąd podczas logowania.");
+            this.errorMessage.set(error.error.error);
           }
           this.loginForm.reset();
         }
